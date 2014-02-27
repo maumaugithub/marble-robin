@@ -68,8 +68,9 @@ HOW TO RUN
 
 Click on the Project Run As> Maven Build...
 Select or Create a configuration as follows:
-Goal: clean install -DskipTests
-Goal: package -DskipTests
+
+    Goal: clean install -DskipTests
+    Goal: package -DskipTests
 
 Please note some of the tests fail and some methods are just stubs.
 
