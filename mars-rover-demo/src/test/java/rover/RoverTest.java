@@ -11,6 +11,16 @@ import org.junit.Test;
 /**
  * @author Maria Perez
  *
+ *  Test Input:
+	    5 5
+	    1 2 N
+	    LMLMLMLMM
+	    3 3 E
+	    MMRMMRMRRM
+
+	    Expected Output:
+	    1 3 N
+	    5 1 E
  */
 public class RoverTest {
 
@@ -25,7 +35,7 @@ public class RoverTest {
 	        grid = new Grid(10, 10);
 	    }
 
-	    private Rover createRightFacingRoverAt(Integer x, Integer y)
+	    private Rover createFrontFacingRoverAt(Integer x, Integer y)
 	    {
 	        Position position = new Position(x, y);
 	        Facing facing = new Facing(1,0);
@@ -35,7 +45,7 @@ public class RoverTest {
 	    @Test
 	    public void processSingleForwardCommand()
 	    {
-	        Rover rover = createRightFacingRoverAt(0, 0);
+	        Rover rover = createFrontFacingRoverAt(0, 0);
 	        rover.executeCommands("f");
 	        assertTrue(1==rover.position.x);
 
@@ -44,28 +54,64 @@ public class RoverTest {
 	   // TODO: Test when going back only
 
 	    @Test
-	    public void processForwardAndBackwardCommands()
-	    {
-	        Rover rover = createRightFacingRoverAt(0, 0);
-	        rover.executeCommands("fb");
-	        assertTrue(0==rover.position.x);
-
-	    }
-
-	    @Test
 	    public void processLeftCommands()
 	    {
-	        Rover rover = createRightFacingRoverAt(0, 0);
+	        Rover rover = createFrontFacingRoverAt(0, 0);
 	        rover.executeCommands("l");
 	        assertTrue(0 == rover.facing.x);
 	        assertTrue(-1 == rover.facing.y);
 
 	    }
+	    
+	    @Test
+	    public void inputScenario1()
+	    {
+	        Rover rover = createFrontFacingRoverAt(5, 5);
+	        // TODO: Need to implement a Direction on Grid
+	        rover.executeCommands("m");
+	        assertTrue(6 == rover.position.y);
+
+	    }
+	    
+	    @Test
+	    public void inputScenario2()
+	    {
+	        Rover rover = createFrontFacingRoverAt(1, 2);
+	        // TODO: Need to implement a Direction on Grid
+	        rover.executeCommands("m");
+	        assertTrue(3==rover.position.y);
+
+	    }
+	    
+	    @Test
+	    public void inputScenario3()
+	    {
+	    	Rover rover = createFrontFacingRoverAt(0, 0);
+	    	rover.executeCommands("lmlmlmlmm");
+	    	System.out.println(rover.getPosition());
+	    }
+
+	    @Test
+	    public void inputScenario4()
+	    {
+	        Rover rover = createFrontFacingRoverAt(3, 3);
+	        // TODO: Need to implement a Direction on Grid
+	        rover.executeCommands("r");
+	        assertTrue(4 == rover.position.x);
+
+	    }
+	    @Test
+	    public void inputScenario5()
+	    {
+	    	Rover rover = createFrontFacingRoverAt(0, 0);
+	    	rover.executeCommands("mmrmmrmrrm");
+	    	System.out.println(rover.getPosition());
+	   }
 
 	    @Test
 	    public void processRightCommands()
 	    {
-	        Rover rover = createRightFacingRoverAt(0, 0);
+	        Rover rover = createFrontFacingRoverAt(0, 0);
 	        rover.executeCommands("r");
 	        assertTrue(0 == rover.facing.x);
 	        assertTrue(1 == rover.facing.y);
