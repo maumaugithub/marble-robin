@@ -28,4 +28,28 @@ public class FacingTest {
         assertTrue(1 == facing.y);
     }
 
+    @Test
+    public void testTurningWest()
+    {
+    	// TODO: Implement same as turning left
+        Facing facing = new Facing(1,0);
+
+        facing.rotate(-90);
+
+        assertTrue(0 == facing.x);
+        assertTrue(-1 == facing.y);
+        
+    }
+
+    @Test
+    public void testTurningEast()
+    {
+    	// TODO: Implement same as turning right
+        Facing facing = new Facing(1,0);
+        facing.rotate(90);
+
+        assertTrue(0 == facing.x);
+        assertTrue(1 == facing.y);
+    }
+    
 }
